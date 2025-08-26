@@ -543,6 +543,38 @@ configurationRegistry.registerConfiguration({
 				},
 			],
 		},
+		[PromptsConfig.PROMPT_FILES_SUGGEST_KEY]: {
+			type: 'object',
+			title: nls.localize(
+				'chat.promptFilesSuggest.title',
+				"Prompt File Suggestions",
+			),
+			markdownDescription: nls.localize(
+				'chat.promptFilesSuggest.description',
+				"Configure which prompt files to suggest in different contexts. Each key is a prompt file name, and the value can be `true` to always suggest, `false` to never suggest, or a when clause expression like `resourceExtname == .js` or `resourceLangId == markdown`.",
+			),
+			default: {},
+			additionalProperties: {
+				oneOf: [
+					{ type: 'boolean' },
+					{ type: 'string' }
+				]
+			},
+			unevaluatedProperties: {
+				oneOf: [
+					{ type: 'boolean' },
+					{ type: 'string' }
+				]
+			},
+			tags: ['experimental'],
+			examples: [
+				{
+					'plan': true,
+					'a11y-audit': 'resourceExtname == .html',
+					'document': 'resourceLangId == markdown'
+				}
+			],
+		},
 		'chat.setup.signInDialogVariant': { // TODO@bpasero remove me eventually
 			type: 'string',
 			enum: ['default', 'apple'],
