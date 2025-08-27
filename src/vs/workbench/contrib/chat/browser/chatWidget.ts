@@ -1008,9 +1008,9 @@ export class ChatWidget extends Disposable implements IChatWidget {
 			if (shouldInclude) {
 				const description = this.promptDescriptionsCache.get(promptName);
 				result.push({
-					icon: Codicon.fileCode,
+					icon: Codicon.run,
 					label: description || localize('chatWidget.promptFile.suggestion', "/{0}", promptName),
-					prompt: `/${promptName}`
+					prompt: `/${promptName} `
 				});
 			}
 		}
